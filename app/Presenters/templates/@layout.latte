@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+	<title>{ifset title}{include title|stripHtml} | {/ifset}UlovDomov - ukol</title>
+
+	<link rel="stylesheet" href="{$basePath}/css/style.css">
+	<link rel="stylesheet" href="{$basePath}/css/bootstrap.min.css">
+</head>
+
+<body>
+
+	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+
+	<ul class="nav">
+		<li{ifCurrent Data:get} class="active"{/ifCurrent}><a id="menu-get" n:href="Data:get">Get</a></li>
+		<li{ifCurrent Data:set} class="active"{/ifCurrent}><a id="menu-set" n:href="Data:set">Set</a></li>
+	</ul>
+
+	<div id="content">
+		{include content}
+	</div>
+
+	<div id="footer">
+		© 2020 <a href="https://www.linkedin.com/in/jakub-pastuszek/">Jakub Pastuszek</a>
+	</div>
+
+</body>
+</html>

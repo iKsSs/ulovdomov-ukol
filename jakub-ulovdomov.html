@@ -1,0 +1,72 @@
+<html class="gr__ulovdomov_cz"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"></head><body data-gr-c-s-loaded="true">
+		<h1>Zadání testového ticketu</h1>
+
+		<h2>Pokyny</h2>
+		<ul>
+			<li>Výsledný kód umístit na public github repositář a poslat Johnymu odkaz v emailu.</li>
+			<li>Je-li cokoliv v zadání nejasné, udělejte vlastní rozhodnutí. Lze poslat i dotaz emailem, ale nemohu garantovat okamžitou reakci.</li>
+			<li>Vypracování úkolu by mělo zabrat střední až menší jednotky hodin.</li>
+			<li>Výsledek nemusí být plně funkční kód, základ je demonstrace modelu, DB návrhu a kódu.</li>
+		</ul>
+
+		<h2>Zadání</h2>
+		<ul>
+			<li>Úkolem je implementovat pouze jednu modelovou část (db + logika). Žádné formuláře, presentery, šablony, ...</li>
+			<li>Implementujte funkcionalitu na nastavovaní dvou práv ("Adresář" a "Vyhledávač") k městům pro jednotlivé uživatele.</li>
+			<li>Mějme dvě již existující tabulky: `user_admin` a `village`. Očekáváme v nich nějaké záznamy, každý záznam má svoje unikátní ID.</li>
+			<li>V tabulce `village` předpokládáme na začátku pouze Praha, Brno.</li>
+			<li>Jeden uživatel může mít nastaveno v každém městě relativně téměř libovolně obě práva,
+				tj. například:
+				<ul>
+					<li>uživatel Adam má v Praze obě práva ("Adresář" a "Vyhledávač") a v Brně ani jedno. </li>
+					<li>Uživatel Bob má v Brně pouze Adresář a v Praze pouze Vyhledávač.</li>
+					<li>Uživatel Cyril má Adresář v obou městech a Vyhledávač jenom v Brně.</li>
+					<li>Uživatel Derek není vůbec v tabulce `user_admin` a tím pádem nemá žádná práva.
+						Tj. pokud je uživatel uveden v tabulce user_admin nemůže nemít nějaká práva,
+						tj. musí mít buď všechna nebo nějak omezená, ale nelze/není nutné, aby šlo nastavit, že uživatel nemá žádné právo.</li>
+				</ul>
+			</li>
+			<li>Pokud nového uživatele Freda přidám do `user_admin`, má bez 
+jakékoliv další akce (ať už na úrovní aplikace či DB/trigger) 
+automaticky všechna práva na všechna města.
+				</li>
+			<li>Pokud do village přidám nové město Ostrava, automaticky bez 
+jakékoliv další akce (ať už na úrovní aplikace či DB/trigger)
+				má každý uživatel, co měl do té chvíle všechna práva na všechny 
+města, také práva na Ostravu. Noapak, uživatel,
+				co měl nějaké omezení libovolného práva (např Adresář) v nějakém 
+městě, tak nesmí získat právo na Ostravu (pro Adresář).
+				Zároveň ale pokud uživatel měl u jednoho práva (třeba Vyhledávač) 
+práva na všechny města, získá právo Vyhledávač na Ostravu. </li>
+			<li>Konkrétně tedy po přidání Ostravy nastanou u uživatelů tyto změny:
+				<ul>
+					<li>Adam: nic nezíská</li>
+					<li>Bob: nic nezíská</li>
+					<li>Cyril: získá právo Adresář pro Ostravu</li>
+					<li>Derek: nic nezíská</li>
+					<li>Fred: získá právo Adresář i Vyhledávač pro Ostravu</li>
+				</ul>
+			</li>
+			<li>Předpokládáme, že existuje model nad tabulkou `village` který umí
+ načíst kompletní seznam měst v tabulce (nic jiného není potřeba).</li>
+			<li>Výsledný model, který se má implementovat, bude mít dvě public metody: set() a get().</li>
+			<li>Metoda set() bude očekávat na vstupu dvě proměné: uživatele a 
+pole které se dá očekávat z formuláře,
+				jež pomocí checkobxu umožní uživateli zvolit libovolnou kombinaci 
+práv.
+				Pokud pomyslný formulář bude kompletně nezaškrtnutý, musí uživatel 
+dostat kompletní neomezená práva. Pokud bude pro libovolné právo např. 
+Adresář celý sloupec měst nezaškrtnutý, získá úživatel taktéž pro dané 
+právo přístup ke všem městům.</li>
+			<li>Pro zjednodušení lze pouzit dvojrozměrne pole:
+				[ addressbook =&gt; [ 1 =&gt; true, 2 =&gt; false ] , search =&gt; [
+ 1 =&gt; false, 2 =&gt; false ] ], kde 1 a 2 jsou ID Praha a Brno.</li>
+			<li>Uvedené pole tedy nastaví uživateli právo Adresář pro Prahu a právo Vyhledávač bude mít pro Prahu i Brno.</li>
+			<li>Metoda get() bude očekávat na vstupu uživatele a ve druhém parametru specifikované zda chceme práva pro
+				Adresář nebo Vyhledávač. Nasledně metoda vrátí pole jež bude obsahovat všechna města, kam má uživatel právo.</li>
+			<li>Předpokládá se, že nový model/třída bude v konstruktoru vyžadovat závislost na modelu pro města pro svou vnitřní činnost.</li>
+		</ul>
+
+	
+</body></html>

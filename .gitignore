@@ -1,0 +1,16 @@
+### JetBrains template
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
+
+.idea/
+.vscode/
+.phpintel/
+
+
+### Linux template
+*~
+
+!.gitignore
+!.htaccess
+vendor/*
+temp/*
+www/adminer

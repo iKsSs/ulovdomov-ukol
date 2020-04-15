@@ -1,0 +1,69 @@
+html { font: normal 18px/1.3 Georgia, "New York CE", utopia, serif; color: #666; -webkit-text-stroke: 1px rgba(0,0,0,0); }
+
+a { color: #006aeb; padding: 3px 1px; }
+a:hover, a:active, a:focus { background-color: #006aeb; text-decoration: none; color: white; }
+
+img { border: none; }
+
+.task {
+    padding: 2em 1em;
+    font-size: 13pt;
+}
+
+
+.row {
+    max-width: 100vw;
+}
+
+h1 {
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+}
+
+table.data {
+
+}
+
+ul.nav {
+    width: 75%;
+    margin: 1em auto;
+}
+
+ul.nav li {
+    display: inline-block;
+    width: 33%;
+    background-color: #1b6d85;
+    color: white;
+    font-weight: 800;
+    text-align: center;
+}
+
+ul.nav li.active {
+    background-color: #8c8c8c;
+}
+
+ul.nav li a {
+    color: white;
+}
+
+
+ul.nav li a:hover {
+    background-color: #2e6da4;
+}
+
+#footer {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+}
+
+#footer a {
+    color: #414141;
+}
+
+#footer a:hover, #footer a:active, #footer a:focus {
+    background-color: inherit;
+    text-decoration: none;
+    color: #414141;
+}

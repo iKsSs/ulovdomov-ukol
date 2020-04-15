@@ -1,0 +1,62 @@
+
+{block title}Get{/block title}
+
+{block content}
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-1">
+		<table class="data table table-striped table-bordered table-hover">
+			<thead>
+			<tr>
+				<th class="id">User ID</th>
+				<th class="id">Village ID</th>
+				<th class="">User</th>
+				<th class="">Village</th>
+				<th class="">Address book</th>
+				<th class="">Search</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr n:foreach="$userPermissions as $permission">
+				<td>{$permission->getUser()->getId()}</td>
+				<td>{$permission->getVillage()->getId()}</td>
+				<td>{$permission->getUser()->getName()}</td>
+				<td>{$permission->getVillage()->getName()}</td>
+				<td>{$permission->getAddressbook()}</td>
+				<td>{$permission->getSearch()}</td>
+			</tr>
+			</tbody>
+		</table>
+
+
+		<table class="data table table-striped table-bordered table-hover">
+			<thead>
+			<tr>
+				<th class="id">ID</th>
+				<th class="">Name</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr n:foreach="$users as $usr">
+				<td>{$usr->getId()}</td>
+				<td>{$usr->getName()}</td>
+			</tr>
+			</tbody>
+		</table>
+
+		<table class="data table table-striped table-bordered table-hover">
+			<thead>
+			<tr>
+				<th class="id">ID</th>
+				<th class="">Name</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr n:foreach="$villages as $village">
+				<td>{$village->getId()}</td>
+				<td>{$village->getName()}</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
